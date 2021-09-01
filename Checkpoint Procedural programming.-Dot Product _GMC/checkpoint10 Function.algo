@@ -1,0 +1,113 @@
+// passing parameters by value:
+// function:
+FUNCTION dot_product (V1: ARRAY_OF INTEGER[n1],V2: ARRAY_OF INTEGER[n2]) : INTEGER
+VAR
+    n1,n2,i,ps:INTEGER;
+    V1: ARRAY_OF INTEGER[n1];
+    V2 : ARRAY_OF INTEGER[n2];
+
+BEGIN
+    REPEAT
+         write("enter the length of V1")
+         read (n1)
+         write("enter the length of V2")
+         read(n2)
+    UNTIL (n1>0 and n2>0)
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+         write("give the element of Vector 1")
+         read(V1[i])
+    END_FOR
+    FOR i FROM 0 TO n2-1 STEP 1  DO
+         write("give the element of Vector 2")
+         read(V2[i])
+    END_FOR
+    IF (n1=n2) THEN
+        ps:=0; 
+        FOR i FROM 0 TO n1-1 STEP 1 DO
+              ps=ps+ V1[i]*V2[i]
+        END_FOR 
+        RETURN ps ;
+    ELSE
+        RETURN false;
+    END_IF
+    
+END
+//Main algorithm: :( passing parameter by value):
+ALGORITHM orthogonal two vectors 
+VAR
+n,i,j,x:INTEGER;
+Vector:ARRAY_OF INTEGER[50];
+Vectors: ARRAY_OF Vector [n];   
+BEGIN
+REPEAT
+    write("enter the number of Vector")
+     read (n)   
+UNTIL (n>0)
+x:=dot_product(Vectors[i],Vectors[j])
+FOR i FROM 0 TO n-1 STEP 1 DO
+     FOR j FROM i+1 TO n STEP 1 DO
+        IF (x=0) THEN
+    write ("the two Vectors", Vectors[i],"et ",Vectors[j], "sont orthogonaux")
+        ELSE
+    write ("the two Vectors",Vectors[i],"and",Vectors[j], "are not orthogonal")
+        END_IF    
+     END_FOR 
+END_FOR
+
+END
+
+// passing parameters by reference:
+// function:
+FUNCTION dot_product (VAR V1: ARRAY_OF INTEGER[n1],V2: ARRAY_OF INTEGER[n2]) : INTEGER
+VAR
+    n1,n2,i,ps:INTEGER;
+    V1: ARRAY_OF INTEGER[n1];
+    V2 : ARRAY_OF INTEGER[n2];
+
+BEGIN
+    REPEAT
+         write("enter the length of V1")
+         read (n1)
+         write("enter the length of V2")
+         read(n2)
+    UNTIL (n1>0 and n2>0)
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+         write("give the element of Vector 1")
+         read(V1[i])
+    END_FOR
+    FOR i FROM 0 TO n2-1 STEP 1  DO
+         write("give the element of Vector 2")
+         read(V2[i])
+    END_FOR
+    IF (n1=n2) THEN
+        ps:=0; 
+        FOR i FROM 0 TO n1-1 STEP 1 DO
+              ps=ps+ V1[i]*V2[i]
+        END_FOR 
+        RETURN ps ;
+    ELSE
+        RETURN false;
+    END_IF
+    
+END
+//Main algorithm: :( passing of parameter by reference):
+ALGORITHM orthogonal two vectors 
+VAR
+n,i,j,x:INTEGER;
+Vector:ARRAY_OF INTEGER[50];
+Vectors: ARRAY_OF Vector [n];   
+BEGIN
+REPEAT
+    write("enter the number of Vector")
+     read (n)   
+UNTIL (n>0)
+x:=dot_product(Vectors[i],Vectors[j])
+FOR i FROM 0 TO n-1 STEP 1 DO
+     FOR j FROM i+1 TO n STEP 1 DO
+        IF (x=0) THEN
+    write ("the two Vectors", Vectors[i],"and ",Vectors[j], "are orthogonal")
+        ELSE
+    write ("the two Vectors",Vectors[i],"and",Vectors[j], "are not orthogonal")
+        END_IF    
+     END_FOR 
+END_FOR
